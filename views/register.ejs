@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("submit-button")
+          .addEventListener("click", function (event) {
+            event.preventDefault(); // prevent the form from being submitted
+            grecaptcha.execute(); // execute the reCAPTCHA verification process
+            grecaptcha.reset();
+          });
+      });
+
+      function onSubmit(token) {
+        document.getElementById("demo-form").submit(); // submit the form after reCAPTCHA verification
+      }
+    </script>
+  </head>
+
+  <header><%- include('./partials/header'); %></header>
+  <body>
+    <h1>Register</h1>
+
+    <form id="demo-form" action="/api/users/send" method="POST">
+      <div>
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          placeholder="userName"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          name="confirmpassword"
+          id="confirmpassword"
+          placeholder="confirmpassword"
+          required
+        />
+      </div>
+      <div>
+        <button
+          class="g-recaptcha"
+          data-sitekey="6Ld6AAYmAAAAAFk37JKE9EgNArB5ghi5DuSw09F8"
+          data-callback="onSubmit"
+          id="submit-button"
+          data-size="normal"
+          data-expiration="100"
+        >
+          Submit
+        </button>
+        <br />
+      </div>
+    </form>
+
+    <!-- only one message can be displayed and sent from the backend -->
+    <% if (typeof message !== 'undefined') { %>
+    <div class="alert alert-danger" role="alert"><%- message %></div>
+    <% } else if (typeof messageSuccess !== 'undefined') { %>
+    <div class="alert alert-success" role="alert"><%- messageSuccess %></div>
+    <% } %>
+
+    <a href="/login">Already have account?</a>
+  </body>
+</html>

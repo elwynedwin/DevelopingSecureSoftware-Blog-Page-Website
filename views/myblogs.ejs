@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Document</title>
+  </head>
+
+  <header><%- include('./partials/header'); %></header>
+
+  <body>
+    <div class="header">
+      <h2>My Blog Page Posts</h2>
+    </div>
+
+    <div class="row">
+      <div class="leftcolumn">
+        <form action="/api/users/searchmyblogs" method="POST">
+          <input
+            class="card search"
+            type="text"
+            name="input"
+            placeholder="Search.."
+          />
+          <button class="search-button" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+
+        <% data.forEach((row) => { %>
+        <div id="card-search" class="card">
+          <h2><%= row.blogTitle %></h2>
+          <h5><%= row.blogTime %></h5>
+          <div class="fakeimg" style="height: 200px">Image</div>
+          <p><%= row.blogDescription %></p>
+
+          <Button class="button"
+            ><a
+              style="text-decoration: none; color: white"
+              href="/editpost/<%= row.id %>"
+              >Edit</a
+            ></Button
+          >
+
+          <form action="/api/users/deleteblog" method="POST">
+            <button
+              name="id"
+              value="<%= row.id %>"
+              class="button"
+              style="background-color: red"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
+        <% }); %>
+      </div>
+
+      <div class="rightcolumn">
+        <div class="card">
+          <h2>About Me</h2>
+          <div class="fakeimg" style="height: 100px">Image</div>
+          <p>Some text about me...</p>
+        </div>
+        <div class="card">
+          <h3>Popular Post</h3>
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+        </div>
+        <div class="card">
+          <h3>Follow Me</h3>
+          <p>Some text..</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <h2>Footer</h2>
+    </div>
+  </body>
+</html>

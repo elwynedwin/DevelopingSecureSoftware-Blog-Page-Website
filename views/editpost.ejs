@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <header><%- include('./partials/header'); %></header>
+
+  <body>
+    <h1>Home</h1>
+
+    <form method="POST" action="/api/users/editpost">
+
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" value="<%= data[0].id %>" readonly />
+
+      <label for="userID">User ID:</label>
+      <input type="text" id="userID" name="userID" value="<%= data[0].userID %>" readonly />
+
+      <label for="blogID">Blog ID:</label>
+      <input type="text" id="blogID" name="blogID" value="<%= data[0].blogID %>" readonly />
+
+      <label for="blogTitle">Blog Title:</label>
+      <input
+        type="text"
+        id="blogTitle"
+        name="blogTitle"
+        value="<%= data[0].blogTitle %>"
+        readonly
+      />
+
+      <label for="blogTime">Blog Time:</label>
+      <input
+        type="text"
+        id="blogTime"
+        name="blogTime"
+        value="<%= data[0].blogTime %>"
+        readonly
+      />
+
+      <div class="form-container">
+        <label for="blogDescription">Blog Description:</label>
+        <input
+          type="text"
+          id="blogDescription"
+          name="blogDescription"
+          value="<%= data[0].blogDescription %>"
+        />
+  
+        <label for="blogText">Blog Text:</label>
+        <input
+          id="blogText"
+          name="blogText"
+          value="<%= data[0].blogText %>"
+        ></input>
+      </div>
+
+      
+
+      <button type="submit">Update Blog Post</button>
+
+
+    </form>
+
+    <style>
+
+        .form-container {
+        width: 50%;
+        padding: 20px;
+        }
+
+        .form-container form {
+            width: auto;
+        }
+
+        .form-container label, .form-container input, .form-container textarea {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+        }
+
+    </style>
+  </body>
+</html>

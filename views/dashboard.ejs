@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Document</title>
+  </head>
+
+  <header><%- include('./partials/header'); %></header>
+
+  <body>
+    <div class="header">
+      <h2>Developing Secure Software Blogs</h2>
+    </div>
+
+    <div class="row">
+      <div>
+        <Button class="button" style="background-color: rgb(166, 204, 242); min-width: 100%"
+          ><a
+            style="text-decoration: none; color: white;"
+            href="/addnewblog"
+            >Create Blog</a
+          ></Button
+        >
+      </div>
+      <div>
+        <form action="/api/users/searchallblogs" method="POST">
+          <input
+            class="card search"
+            name="input"
+            type="text"
+            placeholder="Search.."
+          />
+          <button class="search-button" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+
+        <!-- for each row of blog there will generate a new card -->
+
+        <% data.forEach((row) => { %>
+        <div class="card">
+          <h2><%= row.blogID %> : <%= row.blogTitle %></h2>
+          <h5>Number of Blog Posts: <%= row.numblogs %></h5>
+          <h6><%= row.latesttime %></h6>
+
+          <Button class="button" style="background-color: lightblue"
+            ><a
+              style="text-decoration: none; color: white"
+              href="/blogpage/<%= row.blogID %>"
+              >View Blog</a
+            ></Button
+          >
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="footer">
+      <h2>Footer</h2>
+    </div>
+  </body>
+</html>

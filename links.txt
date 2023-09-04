@@ -1,0 +1,5 @@
+https://planetscale.com/blog/how-to-prevent-sql-injection-attacks-in-node-js
+https://atakde.medium.com/nodejs-jwt-authentication-with-http-only-cookie-5d8a966ac059
+https://www.globalsign.com/en/blog/session-hijacking-and-how-to-prevent-it#:~:text=HTTPOnly%3A%20Setting%20up%20an%20HTTPOnly,Java%20Scripts%20in%20the%20browser.
+https://www.section.io/engineering-education/how-to-get-ssl-https-for-localhost/
+https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html

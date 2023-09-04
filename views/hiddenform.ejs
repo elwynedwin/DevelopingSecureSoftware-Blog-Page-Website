@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Form</title>
+</head>
+<body>
+  <form id="hiddenForm" action="/api/users/sendlogin" method="POST">
+    <div>
+      <input
+        type="hidden"
+        name="email"
+        id="email"
+        placeholder="email"
+        value="<%= email %>"
+        required
+      />
+    </div>
+    <div>
+      <input
+        type="hidden"
+        name="password"
+        id="password"
+        placeholder="password"
+        value="<%= password %>"
+        required
+      />
+    </div>
+    <div>
+      <input type="hidden" name="token" id="token" value="" /> <!-- Add the token input -->
+      <input type="submit" value="Login" style="display: none;" />
+    </div>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const token = '<%= token %>'; // Get the token value from the server-side rendering
+
+      const form = document.getElementById('hiddenForm');
+      const submitButton = form.querySelector('input[type="submit"]');
+
+      // Set the form data
+      const emailInput = document.createElement('input');
+      emailInput.type = 'hidden';
+      emailInput.name = 'email';
+      emailInput.value = email;
+      form.appendChild(emailInput);
+
+      const passwordInput = document.createElement('input');
+      passwordInput.type = 'hidden';
+      passwordInput.name = 'password';
+      passwordInput.value = password;
+      form.appendChild(passwordInput);
+
+      // Set the token value
+      const tokenInput = document.getElementById('token');
+      tokenInput.value = token;
+
+      // Submit the form
+      form.submit();
+    });
+  </script>
+</body>
+</html>

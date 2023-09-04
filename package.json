@@ -1,0 +1,37 @@
+{
+  "name": "dss-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testMocha": "mocha test/authTest.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "hpp": "^0.2.3",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mocha": "^10.2.0",
+    "nodemailer": "^6.9.2",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "rate-limiter": "^0.2.0",
+    "sequelize": "^6.30.0",
+    "toobusy-js": "^0.5.1",
+    "validator": "^13.9.0"
+  }
+}
