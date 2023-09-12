@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 });
 
 //Using a Http server protects from Session Hijacking due to data encrption
-//const server = https.createServer({ key, cert }, app);
+const server = https.createServer({ key, cert }, app);
 
 //Sending a null value for verifiedUser so the function checkUser() can check if the user is logged in
 app.use(function (req, res, next) {
