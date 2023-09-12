@@ -47,7 +47,7 @@ app.use(function (req, res, next) {
 
 //Using a Http server protects from Session Hijacking due to data encrption
 // const server = https.createServer({ key, cert }, app);
-const server = https.createServer(app);
+// const server = https.createServer(app);
 
 //Sending a null value for verifiedUser so the function checkUser() can check if the user is logged in
 app.use(function (req, res, next) {
@@ -69,4 +69,4 @@ app.use("/api/users", require("./routes/routes"));
 app.use("/", require("./routes/pages"));
 
 //listening to server connection
-server.listen(PORT, () => console.log(`Server is connected on ${PORT}`));
+app.listen(PORT, () => console.log(`Server is connected on ${PORT}`));
