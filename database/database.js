@@ -9,12 +9,8 @@ module.exports = () => {
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
     multipleStatements: false, //multiple statements allow for SQL injections
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+    ssl: {
+      rejectUnauthorized: false,
     },
   });
 
